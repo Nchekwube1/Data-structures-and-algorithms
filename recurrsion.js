@@ -12,4 +12,11 @@ function callerTunesRecursive(n) {
     console.log(n);
     callerTunesRecursive(n - 1);
 }
-callerTunesRecursive(10);
+function sumNumsRecursive(n, total) {
+    if (total === void 0) { total = 0; }
+    if (n <= 0) {
+        return total;
+    }
+    return sumNumsRecursive(n - 1, total + n);
+}
+console.log(sumNumsRecursive(5004));
