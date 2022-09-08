@@ -19,4 +19,4 @@ function slidingWindow({ arr, val }: slidingInteface) {
   return maxSum;
 }
 
-console.log(slidingWindow({ arr: [9, 3, 4, 5, 6, 8, 2, 1], val: 4 }));
+console.log(slidingWindow({ arr: [9, 3, 4, 5, 6, 8, 2, 200], val: 4 }));
