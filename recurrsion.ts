@@ -15,12 +15,16 @@ function callerTunesRecursive<T extends number>(n: T) {
   callerTunesRecursive(n - 1);
 }
 
-function sumNumsRecursive<T extends number>(n: T, total = 0): any {
+function sumNumsRecursive<T extends number>(n: T, total = 0): number {
   if (n <= 0) {
     return total;
   }
 
   return sumNumsRecursive(n - 1, total + n);
 }
+function simplyRecursive<T extends number>(num: T): number {
+  if (num === 1) return 1;
+  return num + simplyRecursive(num - 1);
+}
 
-console.log(sumNumsRecursive(5004));
+console.log(simplyRecursive(10));
