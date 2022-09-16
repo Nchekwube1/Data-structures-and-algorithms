@@ -15,21 +15,31 @@ function merge2Arrays(arr1: number[], arr2: number[]) {
       pointer2++;
     }
   }
-  if (pointer1 === length1 - 1 && pointer2 === length2 - 1) {
-    return result;
-  } else if (pointer1 < length1 - 1) {
-    while (pointer1 < length1) {
-      result.push(arr1[pointer1]);
-      pointer1++;
-    }
-    return result;
-  } else {
-    while (pointer2 < length2) {
-      result.push(arr2[pointer2]);
-      pointer2++;
-    }
-    return result;
+  while (pointer2 < length2) {
+    result.push(arr2[pointer2]);
+    pointer2++;
   }
+  while (pointer1 < length1) {
+    result.push(arr1[pointer1]);
+    pointer1++;
+  }
+  //   if (pointer1 === length1 - 1 && pointer2 === length2 - 1) {
+  //     return result;
+  //   } else if (pointer1 < length1 - 1) {
+  //     while (pointer1 < length1) {
+  //       result.push(arr1[pointer1]);
+  //       pointer1++;
+  //     }
+  //     return result;
+  //   } else {
+  //     while (pointer2 < length2) {
+  //       result.push(arr2[pointer2]);
+  //       pointer2++;
+  //     }
+  //     return result;
+  //   }
+
+  return result;
 }
 
 console.log(
