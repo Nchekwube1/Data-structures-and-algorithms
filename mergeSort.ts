@@ -27,6 +27,19 @@ function merge2Arrays(arr1: number[], arr2: number[]) {
   return result;
 }
 
-console.log(
-  merge2Arrays([1, 10, 50, 62, 89, 105, 200, 345, 998, 11234], [2, 14, 99, 100])
-);
+// console.log(
+//   merge2Arrays([1, 10, 50, 62, 89, 105, 200, 345, 998, 11234], [2, 14, 99, 100])
+// );
+
+function mergeSort(arr: number[]) {
+  let fullLength = arr.length;
+  if (fullLength < 2) return arr;
+
+  let halfLength = Math.floor(fullLength / 2);
+  let firstHalf: number[] = mergeSort(arr.slice(0, halfLength));
+  let secondHalf: number[] = mergeSort(arr.slice(halfLength, fullLength));
+
+  return merge2Arrays(firstHalf, secondHalf);
+}
+
+console.log(mergeSort([1, 10, 50, 62, 89, 105, 200, 345, 998, 11234]));
