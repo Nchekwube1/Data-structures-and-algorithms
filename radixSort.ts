@@ -26,4 +26,21 @@ function largestNum(numArr: number[]): number {
   }
   return largest;
 }
-console.log(largestNum([136789, 1112232223334455, 12, 3345, 456]));
+// console.log(largestNum([136789, 1112232223334455, 12, 3345, 456]));
+
+// Implementing radix sort
+
+function radixSort(input: number[]): number[] {
+  let maxDigitCount = largestNum(input);
+  for (let i = 0; i < maxDigitCount; i++) {
+    let individualBuckets: any = Array.from({ length: 10 }, () => []);
+    for (let k = 0; k < input.length; k++) {
+      let digit = digitChecker(input[k], i);
+      individualBuckets[digit].push(input[k]);
+    }
+    input = [].concat(...individualBuckets);
+  }
+  return input;
+}
+
+console.log(radixSort([136789, 1112232223334455, 12, 3345, 456]));
