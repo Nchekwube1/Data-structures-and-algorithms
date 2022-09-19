@@ -41,6 +41,22 @@ class SinglyLinkedList {
         this.tail.next = null;
       }
       this.length--;
+      if (this.length === 0) {
+        this.head = null;
+        this.tail = null;
+      }
+      return current.val;
+    }
+  }
+
+  shift() {
+    if (this.length === 0) return undefined;
+    else {
+      let current = this.head;
+      this.head = current.next;
+      current.next = null;
+      this.length--;
+
       return current.val;
     }
   }
@@ -51,6 +67,8 @@ const first = new SingleNode("asd");
 list.push(first);
 // console.log({ list });
 const second = new SingleNode("sec");
+const third = new SingleNode("third");
 list.push(second);
-console.log(list.pop());
+list.push(third);
+console.log(list.shift());
 console.log(list);
