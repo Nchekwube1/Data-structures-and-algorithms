@@ -56,19 +56,35 @@ class SinglyLinkedList {
       this.head = current.next;
       current.next = null;
       this.length--;
-
+      if (this.length === 0) {
+        this.tail = null;
+      }
       return current.val;
     }
   }
+  unShift(val: any) {
+    let newNode = new SingleNode(val);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+  /// Retreiving a node by its position in the linked list
+  get(index: number) {}
 }
 
 let list = new SinglyLinkedList();
-const first = new SingleNode("asd");
-list.push(first);
-// console.log({ list });
-const second = new SingleNode("sec");
-const third = new SingleNode("third");
-list.push(second);
-list.push(third);
-console.log(list.shift());
-console.log(list);
+// const first = new SingleNode("asd");
+// list.push(first);
+// const second = new SingleNode("sec");
+// const third = new SingleNode("third");
+// list.push(second);
+// list.push(third);
+console.log(list.unShift("unshift"));
+// console.log(list);
