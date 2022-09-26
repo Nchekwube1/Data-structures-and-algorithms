@@ -80,16 +80,50 @@ class SinglyLinkedList {
     if (index < 0 || index >= this.length) return null;
     else {
       let track = 0;
-      let current = this.head;
+      let current: SingleNode | null = this.head;
       while (track !== index) {
-        current = current.next;
+        current = current?.next;
         track++;
       }
-      console.log("got herr");
-
       return current;
     }
   }
+
+  // Changing the value of a node based on its position on the linked list
+
+  set(index: number, node: SingleNode) {
+    let foundNode = this.get(index);
+
+    if (foundNode) {
+      foundNode.val = node;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //Inserting a mode at a specific index
+  insert(index: number, node: any) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) {
+      this.push(node);
+      return true;
+    }
+    if (index === 0) {
+      this.unShift(node);
+      return true;
+    }
+    let newNode = new SingleNode(node);
+    let holder = this.get(index - 1)!!;
+
+    newNode.next = holder.next;
+    holder.next = newNode;
+    this.length++;
+    return true;
+  }
+
+  // Removing a node at a specific index
+  remove(index: number, node: any) {}
 }
 
 let list = new SinglyLinkedList();
@@ -99,5 +133,5 @@ const second = new SingleNode("sec");
 const third = new SingleNode("third");
 list.push(second);
 list.push(third);
-// list.unShift("unshift");
-console.log(list.get(-2));
+list.insert(1, "unshift");
+console.log(list.get(2));
