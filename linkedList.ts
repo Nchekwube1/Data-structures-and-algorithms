@@ -15,6 +15,7 @@ class SinglyLinkedList {
   private tail: null | any;
   private length: number = 0;
 
+  // Add a node to the end of the list
   push(val: any) {
     let newNode = new SingleNode(val);
     if (!this.head) {
@@ -27,6 +28,8 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  //Remove a node from the end of the list
 
   pop() {
     if (this.length === 0) return undefined;
@@ -48,7 +51,7 @@ class SinglyLinkedList {
       return current.val;
     }
   }
-
+  // Remove a node from the beginnning of the list
   shift() {
     if (this.length === 0) return undefined;
     else {
@@ -62,6 +65,8 @@ class SinglyLinkedList {
       return current.val;
     }
   }
+
+  //Add a node to the beginnning of the list
   unShift(val: any) {
     let newNode = new SingleNode(val);
 
@@ -123,7 +128,23 @@ class SinglyLinkedList {
   }
 
   // Removing a node at a specific index
-  remove(index: number, node: any) {}
+  remove(index: number) {
+    if (index < 0 || index >= this.length) return false;
+    if (index === this.length - 1) {
+      return this.pop();
+    }
+    if (index === 0) {
+      return this.shift();
+    }
+    let holder = this.get(index - 1)!!;
+    let tbr = holder.next;
+    holder.next = tbr.next;
+    this.length--;
+    return tbr;
+  }
+
+  // Reverse a linked list in place
+  reverse() {}
 }
 
 let list = new SinglyLinkedList();
@@ -133,5 +154,7 @@ const second = new SingleNode("sec");
 const third = new SingleNode("third");
 list.push(second);
 list.push(third);
-list.insert(1, "unshift");
-console.log(list.get(2));
+// list.insert(1, "unshift");
+console.log(list.remove(2));
+console.log(list.remove(1));
+console.log(list);
