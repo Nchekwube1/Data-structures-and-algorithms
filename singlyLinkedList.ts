@@ -13,4 +13,12 @@ class NodeClass {
   }
 }
 
-// -- Step two: create the SinglyLinkesList class to setup the singly linked list flow
+// -- Step two: create the SinglyLinkedList class to setup the singly linked list flow
+// initialise the linked list with a pointer to the head , tail and length of the linked list
+
+class SinglyLinkedListClass {
+  private length: number = 0;
+  private head: null | any = null;
+  private tail: null | any = null;
+  constructor() {}
+}
