@@ -18,7 +18,27 @@ class NodeClass {
 
 class SinglyLinkedListClass {
   private length: number = 0;
-  private head: null | any = null;
-  private tail: null | any = null;
+  private head: null | NodeClass = null;
+  private tail: null | NodeClass = null;
   constructor() {}
+  // The push method takes a value and pushes to the end of the list making it the new tail, also makes it the new head if its the first
+  //value being assigned
+  push(node: any) {
+    //pseudocode: 1. accept a value and create a new node with the value passed
+    const newNode = new NodeClass(node);
+    //2. If the head is null, set the head and tail of the linked list to point to the new value passed and increment the length property by one
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    }
+    // otherwise set the next property on the current tail to be the new value and set the new tail as the new value and increment the length property by one
+    else {
+      if (this.tail) {
+        this.tail.next = newNode;
+        this.tail = newNode;
+      }
+    }
+    this.length++;
+    return this;
+  }
 }
