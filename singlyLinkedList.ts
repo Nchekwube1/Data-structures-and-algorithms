@@ -84,6 +84,19 @@ class SinglyLinkedListClass {
       return current;
     }
   }
+
+  // Add a node to the beginning of the linked list and increse the length of the list
+  unshift(val: any) {
+    if (!this.head) {
+      this.push(val);
+    } else {
+      let newHead = new NodeClass(val);
+      let oldHead = this.head;
+      this.head = newHead;
+      this.head.next = oldHead;
+      this.length++;
+    }
+  }
 }
 
 const singleList = new SinglyLinkedListClass();
