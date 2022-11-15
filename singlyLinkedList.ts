@@ -41,4 +41,41 @@ class SinglyLinkedListClass {
     this.length++;
     return this;
   }
+
+  // The pop method removes the last item from the list and returns it, while deecrementing the length of the list
+  pop() {
+    // If there are no nodes in the list return undefined
+    if (this.length === 0) return undefined;
+    // else, traverse through the list and set the second to last node's next property to null
+    // return the last node and decrement the length of the linked list
+    else {
+      let current = this.head;
+      let prev = current;
+      while (current?.next) {
+        prev = current;
+        current = current.next;
+      }
+      this.tail = prev;
+      if (this.tail) {
+        this.tail.next = null;
+      }
+      this.length--;
+      if (this.length === 0) {
+        this.head = null;
+        this.tail = null;
+      }
+      return current;
+    }
+  }
 }
+
+const singleList = new SinglyLinkedListClass();
+singleList.push("Here");
+singleList.push("We");
+singleList.push("go");
+singleList.push("biatch");
+
+console.log(singleList.pop());
+console.log(singleList.pop());
+
+console.log(singleList);
