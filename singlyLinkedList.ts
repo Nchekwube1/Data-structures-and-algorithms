@@ -67,6 +67,23 @@ class SinglyLinkedListClass {
       return current;
     }
   }
+
+  // Remove a node from the beginning of the linked list and decrease the length of the list
+  shift() {
+    if (this.length === 0) return undefined;
+    else {
+      let current = this.head;
+      let nextNode = this.head?.next;
+      if (this.head) {
+        this.head = nextNode;
+      }
+      this.length--;
+      if (this.length === 0) {
+        this.tail = null;
+      }
+      return current;
+    }
+  }
 }
 
 const singleList = new SinglyLinkedListClass();
@@ -75,7 +92,6 @@ singleList.push("We");
 singleList.push("go");
 singleList.push("biatch");
 
-console.log(singleList.pop());
-console.log(singleList.pop());
+console.log(singleList.shift());
 
 console.log(singleList);
