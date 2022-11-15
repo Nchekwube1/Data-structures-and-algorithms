@@ -17,7 +17,7 @@ class SinglyLinkedList {
 
   // Add a node to the end of the list
   push(val: any) {
-    let newNode = new SingleNode(val);
+    let { val: newNode } = new SingleNode(val);
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
@@ -127,6 +127,14 @@ class SinglyLinkedList {
     return true;
   }
 
+  printList() {
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
+
   // Removing a node at a specific index
   remove(index: number) {
     if (index < 0 || index >= this.length) return false;
@@ -147,14 +155,96 @@ class SinglyLinkedList {
   reverse() {}
 }
 
-let list = new SinglyLinkedList();
-const first = new SingleNode("asd");
+class SinglyLinkedListTwo {
+  private head: null | any;
+  private tail: null | any;
+  private length: number = 0;
+
+  // Add a node to the end of the list
+  push(val: any) {
+    let { val: newNode } = new SingleNode(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++;
+    return this.length;
+  }
+  printList() {
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
+  printArray() {
+    let current = this.head;
+    let array = [];
+    while (current) {
+      array.push(current.val);
+      current = current.next;
+    }
+    return array;
+  }
+  sumList() {
+    let current = this.head;
+    let total = 0;
+    while (current) {
+      total += current.val;
+      current = current.next;
+    }
+    return total;
+  }
+  exists(value: any) {
+    let current = this.head;
+    while (current) {
+      if (current.val === value) return true;
+      current = current.next;
+    }
+    return false;
+  }
+  find(index: number) {
+    let current = this.head;
+    let currIndex = 0;
+
+    if (index > this.length || index < 0) {
+      return undefined;
+    }
+    while (current) {
+      if (currIndex === index) {
+        return current.val;
+      }
+      current = current.next;
+      currIndex++;
+    }
+  }
+  reverse() {
+    let current = this.head;
+    let prev = null;
+
+    while (current) {
+      let next = current.next;
+
+      current.next = prev;
+      prev = current;
+      current = next;
+    }
+
+    return prev;
+  }
+}
+
+let list = new SinglyLinkedListTwo();
+const first = new SingleNode(415);
+const second = new SingleNode(92);
+const third = new SingleNode(80);
 list.push(first);
-const second = new SingleNode("sec");
-const third = new SingleNode("third");
 list.push(second);
 list.push(third);
 // list.insert(1, "unshift");
-console.log(list.remove(2));
-console.log(list.remove(1));
-console.log(list);
+// console.log(list.remove(2));
+// console.log(list.remove(1));
+console.log(list.reverse());
