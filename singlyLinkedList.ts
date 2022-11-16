@@ -153,6 +153,19 @@ class SinglyLinkedListClass {
     this.length++;
     return true;
   }
+  remove(index: number) {
+    if (index < 0 || index > this.length - 1) return undefined;
+    if (index === this.length - 1) return this.pop();
+    if (index === 0) return this.shift();
+    let prevNode = this.get(index - 1);
+    let currentNode = this.get(index);
+    let nextNode = currentNode?.next;
+    if (prevNode?.next) {
+      prevNode.next = nextNode;
+    }
+    this.length--;
+    return currentNode;
+  }
 }
 
 const singleList = new SinglyLinkedListClass();
@@ -161,6 +174,6 @@ singleList.push("We");
 singleList.push("go");
 singleList.push("biatch");
 
-console.log(singleList.set("you", 1));
+console.log(singleList.remove(1));
 
 console.log(singleList);
