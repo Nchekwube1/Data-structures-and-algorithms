@@ -88,13 +88,14 @@ class SinglyLinkedListClass {
   // Add a node to the beginning of the linked list and increse the length of the list
   unshift(val: any) {
     if (!this.head) {
-      this.push(val);
+      return this.push(val);
     } else {
       let newHead = new NodeClass(val);
       let oldHead = this.head;
       this.head = newHead;
       this.head.next = oldHead;
       this.length++;
+      return this;
     }
   }
 
@@ -134,11 +135,11 @@ class SinglyLinkedListClass {
     // if the index is equal to the length of the list that just signifies a push method so we can utilise our previously
     // defined push method
     if (index === this.length) {
-      return this.push(value);
+      return !!this.push(value);
     }
     // if the index is zero, we can use the unshift method to insert at the beginning
     if (index === 0) {
-      return this.unshift(value);
+      return !!this.unshift(value);
     }
     // Else perform logic which inserts at any other index
     // use the get method to access the node at the index -1 position
