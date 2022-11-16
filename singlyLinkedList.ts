@@ -167,6 +167,39 @@ class SinglyLinkedListClass {
     this.length--;
     return currentNode;
   }
+  // Reverse the order of a linked list in place (without making another copy)
+
+  reverse() {
+    if (this.length === 0) return undefined;
+    // get a reference to the head
+    let node = this.head;
+    // swap the head and the tail
+    this.head = this.tail;
+    this.tail = node;
+    // loop through the list and reverse the node by altering the next property on each node
+    //prev starts from null to signify our new tails end
+    let prev = null;
+    // next should point to the next property of whatever node we are on currently, so as not to break the chain
+    let next;
+    for (let i = 0; i < this.length; i++) {
+      next = node?.next;
+      if (node) {
+        node.next = prev;
+      }
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
+  print() {
+    let item = [];
+    let current = this.head;
+    while (current) {
+      item.push(current.value);
+      current = current.next;
+    }
+    return console.log(item);
+  }
 }
 
 const singleList = new SinglyLinkedListClass();
@@ -175,6 +208,7 @@ singleList.push("We");
 singleList.push("go");
 singleList.push("biatch");
 
-console.log(singleList.remove(1));
+// console.log(singleList.remove(1));
 
-console.log(singleList);
+console.log(singleList.reverse());
+singleList.print();
