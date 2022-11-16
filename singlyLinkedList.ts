@@ -97,6 +97,20 @@ class SinglyLinkedListClass {
       this.length++;
     }
   }
+
+  // Retrieve a node at certain "index" in the list
+  get(index: number) {
+    // if the index passed is less than zero or greater than or equal to the length of the list, return null
+    if (index < 0 || index >= this.length) return null;
+    // loop through the list starting from zero until you reach the node at the specific index and return that node
+    let count = 0;
+    let current = this.head;
+    while (count < index) {
+      current = current?.next;
+      count++;
+    }
+    return current;
+  }
 }
 
 const singleList = new SinglyLinkedListClass();
@@ -105,6 +119,6 @@ singleList.push("We");
 singleList.push("go");
 singleList.push("biatch");
 
-console.log(singleList.shift());
+console.log(singleList.get(-2));
 
-console.log(singleList);
+// console.log(singleList);
