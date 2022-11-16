@@ -112,6 +112,16 @@ class SinglyLinkedListClass {
     }
     return current;
   }
+  // Set a node at certain "index" in the list
+  set(value: any, index: number) {
+    // first get the current node at the specificied index
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.value = value;
+      return true;
+    }
+    return false;
+  }
 }
 
 const singleList = new SinglyLinkedListClass();
@@ -120,6 +130,6 @@ singleList.push("We");
 singleList.push("go");
 singleList.push("biatch");
 
-console.log(singleList.get(-2));
+console.log(singleList.set("you", 1));
 
-// console.log(singleList);
+console.log(singleList);
