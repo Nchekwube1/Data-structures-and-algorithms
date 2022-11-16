@@ -153,6 +153,7 @@ class SinglyLinkedListClass {
     this.length++;
     return true;
   }
+  // Remove item from certain index at the list
   remove(index: number) {
     if (index < 0 || index > this.length - 1) return undefined;
     if (index === this.length - 1) return this.pop();
