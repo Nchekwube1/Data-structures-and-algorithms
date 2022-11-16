@@ -116,6 +116,7 @@ class SinglyLinkedListClass {
   set(value: any, index: number) {
     // first get the current node at the specificied index
     let foundNode = this.get(index);
+    // if a node exists at that index, override the value property o the node to the new value passed
     if (foundNode) {
       foundNode.value = value;
       return true;
