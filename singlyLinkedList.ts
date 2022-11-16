@@ -102,7 +102,8 @@ class SinglyLinkedListClass {
   get(index: number) {
     // if the index passed is less than zero or greater than or equal to the length of the list, return null
     if (index < 0 || index >= this.length) return null;
-    // loop through the list starting from zero until you reach the node at the specific index and return that node
+    // loop through the list starting from zero until you reach the node at the specific
+    // index -1 because its a zero based index access and return that node
     let count = 0;
     let current = this.head;
     while (count < index) {
