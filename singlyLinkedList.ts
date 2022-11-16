@@ -123,6 +123,35 @@ class SinglyLinkedListClass {
     }
     return false;
   }
+
+  // Insert a new node at a specified index
+  insert(value: any, index: number) {
+    // if the index is less than zero or greater than the length of the list return false
+    if (index < 0 || index > this.length) {
+      return false;
+    }
+
+    // if the index is equal to the length of the list that just signifies a push method so we can utilise our previously
+    // defined push method
+    if (index === this.length) {
+      return this.push(value);
+    }
+    // if the index is zero, we can use the unshift method to insert at the beginning
+    if (index === 0) {
+      return this.unshift(value);
+    }
+    // Else perform logic which inserts at any other index
+    // use the get method to access the node at the index -1 position
+    let previousNode = this.get(index - 1);
+    let nextNode = previousNode?.next;
+    let newNode = new NodeClass(value);
+    if (previousNode) {
+      previousNode.next = newNode;
+    }
+    newNode.next = nextNode;
+    this.length++;
+    return true;
+  }
 }
 
 const singleList = new SinglyLinkedListClass();
