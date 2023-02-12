@@ -26,7 +26,7 @@ class SinglyLinkedListClass {
   push(node: any) {
     //pseudocode: 1. accept a value and create a new node with the value passed
     const newNode = new NodeClass(node);
-    //2. If the head is null, set the head and tail of the linked list to point to the new value passed and increment the length property by one
+    //2. If the head is null, set the head and tail of the linked list to point to the new  node created and increment the length property by one
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
@@ -177,7 +177,7 @@ class SinglyLinkedListClass {
     this.head = this.tail;
     this.tail = node;
     // loop through the list and reverse the node by altering the next property on each node
-    //prev starts from null to signify our new tails end
+    // prev starts from null to signify our new tails end
     let prev = null;
     // next should point to the next property of whatever node we are on currently, so as not to break the chain
     let next;
@@ -206,9 +206,14 @@ const singleList = new SinglyLinkedListClass();
 singleList.push("Here");
 singleList.push("We");
 singleList.push("go");
-singleList.push("biatch");
 
 // console.log(singleList.remove(1));
+// console.log(singleList.get(1));
 
-console.log(singleList.reverse());
+// console.log(singleList);
+singleList.reverse();
 singleList.print();
+
+// 1 ->2->3->4
+
+// 4->2->3->1
