@@ -36,7 +36,18 @@ const hashTable = function () {
       }
     }
   };
-  hashTable.prototype.remove = function (key: string) {};
+  hashTable.prototype.remove = function (key: string) {
+    let index = hash(key, storageLimit);
+    if (storage[index].length === 1 && storage[index][0][0] === key) {
+      delete storage[index];
+    } else {
+      for (let i = 0; i < storage[index]; i++) {
+        if (storage[index][i][0] === key) {
+          delete storage[index];
+        }
+      }
+    }
+  };
 };
 
 // let newTable = new hashTable()
