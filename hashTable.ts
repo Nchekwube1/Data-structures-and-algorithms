@@ -48,6 +48,19 @@ const hashTable = function () {
       }
     }
   };
+  hashTable.prototype.lookup = function (key: string) {
+    let index = hash(key, storageLimit);
+
+    if (!storage[index]) {
+      return undefined;
+    } else {
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+  };
 };
 
 // let newTable = new hashTable()
