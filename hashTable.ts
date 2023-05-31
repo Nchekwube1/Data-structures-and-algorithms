@@ -9,3 +9,37 @@ const hash = (val: string, max: number) => {
 
   return hashed % max;
 };
+
+const hashTable = function () {
+  let storage: any[] = [];
+  const storageLimit = 4;
+
+  hashTable.prototype.print = function () {
+    console.log({ storage });
+  };
+
+  hashTable.prototype.add = function (key: string, value: number) {
+    let index = hash(key, storageLimit);
+    if (!storage[index]) {
+      storage[index] = [[key, value]];
+    } else {
+      let inserted = false;
+
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (!inserted) {
+        storage[index].push([key, value]);
+      }
+    }
+  };
+  hashTable.prototype.remove = function (key: string) {};
+};
+
+// let newTable = new hashTable()
+// newTable.
+
+// console.log({ table:  hashTable() });
